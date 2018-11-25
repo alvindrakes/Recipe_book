@@ -49,7 +49,7 @@ public class ViewActivity extends AppCompatActivity {
 
         bundle = new Bundle();
         lv = (ListView) findViewById(R.id.RecipesListView);
-        lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, allRecipesTitles));
+        lv.setAdapter(new ArrayAdapter<String>(this, R.layout.custom_textview, allRecipesTitles));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
