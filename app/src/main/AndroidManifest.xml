@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ViewActivity" />
+        <activity android:name=".RecipeDetailsActivity"/>
+
+        <provider
+            android:name="com.example.alvin.recipe_book.RecipeContentProvider"
+            android:authorities="com.example.alvin.MyContentProvider"
+            android:exported="true" />
     </application>
 
 </manifest>
