@@ -14,14 +14,13 @@ import android.widget.ListView;
 public class ViewActivity extends AppCompatActivity {
 
     private Context mContext;
+    private SQLiteDatabase db;
+    private MyDBOpenHelper myDBHelper;
 
     private ListView lv;
     private Cursor cursor;
     private Intent intent;
     private Bundle bundle;
-
-    private SQLiteDatabase db;
-    private MyDBOpenHelper myDBHelper;
 
     private int i = 0;
     private int[] allTitlesId;
@@ -46,13 +45,11 @@ public class ViewActivity extends AppCompatActivity {
         i = 0;
         allTitlesId = new int[getCount()];
         allRecipesTitles = new String[getCount()];
-        getAllTitles();
+        getAllRecipes();
 
         bundle = new Bundle();
         lv = (ListView) findViewById(R.id.RecipesListView);
-
         lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, allRecipesTitles));
-
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -60,7 +57,7 @@ public class ViewActivity extends AppCompatActivity {
 
                 selectedId = allTitlesId[myItemInt];
                 intent = new Intent(ViewActivity.this, RecipeDetailsActivity.class);
-                //get id of the selected recipe record
+                // Get id of the selected recipe record
                 bundle.putInt("id", selectedId);
                 intent.putExtras(bundle);
                 startActivity(intent);
@@ -68,7 +65,7 @@ public class ViewActivity extends AppCompatActivity {
         });
     }
 
-    //get the total number of record in the table
+    // Get the total number of recipe record in the table
     public int getCount()
     {
         Cursor cursor =  db.rawQuery("SELECT COUNT (*) FROM recipe",null);
@@ -78,8 +75,8 @@ public class ViewActivity extends AppCompatActivity {
         return result;
     }
 
-    //get title for each recipe record
-    public void getAllTitles() {
+    // Get title for all recipes' record from the database table
+    public void getAllRecipes() {
 
         cursor = db.query("recipe", null, null, null, null, null, null);
         if(cursor.moveToFirst()) {
@@ -91,12 +88,12 @@ public class ViewActivity extends AppCompatActivity {
         }
     }
 
-    //press this button to turn back to main activity
+    // Go back to main activity when button is clicked
     public void backToMain(View v) {
         finish();
     }
 
-    //update the listView after updating or deleting a record
+    // Update the listView after updating or deleting a recipe
     @Override
     public void onResume() {
         super.onResume();

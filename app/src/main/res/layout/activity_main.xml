@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#212121"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -24,24 +25,17 @@
             android:id="@+id/TitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="Enter Title"
+            android:text="Enter Title:"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:layout_constraintHorizontal_bias="0.235"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/EditableTitle"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/EditableTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:ems="10"
+            android:textColor="#FFFFFF"
             android:inputType="textPersonName"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="51dp" />
@@ -59,7 +53,7 @@
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/ConfirmUpdate"
+        android:textColor="#FFFFFF"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -70,7 +64,8 @@
             android:id="@+id/ContentTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter Content"
+            android:text="Enter Content:"
+            android:textColor="#FFFFFF"
             android:textSize="18sp" />
 
         <EditText
@@ -78,6 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textColor="#FFFFFF"
             android:inputType="textMultiLine" />
 
     </LinearLayout>
@@ -86,23 +82,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_add"
+            android:background="@color/colorAccent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="addBtnOnClick"
-            android:text="Button"
-            tools:text="Add new recipe" />
+            android:text= "Add new recipe"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btn_showAll"
+            android:background="@color/colorAccent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Show all recipes" />
+            android:text="Show all recipes"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 </LinearLayout>

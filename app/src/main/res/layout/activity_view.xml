@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#212121"
     tools:context="com.example.alvin.recipe_book.ViewActivity">
 
     <Button
@@ -16,6 +17,8 @@
         android:layout_marginBottom="8dp"
         android:onClick="backToMain"
         android:text="Back to Main"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"

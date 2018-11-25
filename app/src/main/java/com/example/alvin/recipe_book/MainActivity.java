@@ -10,8 +10,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+/*
+    This a a recipe book app.
+    It has 3 activities:
+    MainActivity which is the homepage,
+    ViewActivity that show the list of recipes stored,
+    RecipeDetailActivity that let you change or delete your stored recipes
+
+    MyDBOpenHelper is the database connected to ProvideContract and RecipeContentProvider
+ */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,16 +70,23 @@ public class MainActivity extends AppCompatActivity {
         title = titleText.getText().toString();
         contents = contentText.getText().toString();
 
-        //put inserted value into ContentValue
-        ContentValues insertValue = new ContentValues();
-        insertValue.put("title", title);
-        insertValue.put("contents", contents);
+        // Don't add the recipe value if the fields are not fully filled up
+        if (title.equals("") || contents.equals("") ) {
+            Toast.makeText(getApplicationContext(), "Make sure all fields are filled up", Toast.LENGTH_SHORT).show();
 
-        resolver.insert(ProviderContract.URI.ID_INSERT, insertValue);
-        Toast.makeText(getApplicationContext(), "Recipe inserted", Toast.LENGTH_SHORT).show();
+        } else {
 
-        // clear textview when recipe is added
-        titleText.setText("");
-        contentText.setText("");
+            // add newly inserted recipe into ContentValue
+            ContentValues insertValue = new ContentValues();
+            insertValue.put("title", title);
+            insertValue.put("contents", contents);
+
+            resolver.insert(ProviderContract.URI.ID_INSERT, insertValue);
+            Toast.makeText(getApplicationContext(), "New recipe added", Toast.LENGTH_SHORT).show();
+
+            // clear EditText content when recipe is successfully added
+            titleText.setText("");
+            contentText.setText("");
+        }
     }
 }

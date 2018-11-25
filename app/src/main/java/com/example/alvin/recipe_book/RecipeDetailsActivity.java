@@ -12,9 +12,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/*
+    Activity responsible for updating or deleting existing recipes stored in the database
+ */
 public class RecipeDetailsActivity extends AppCompatActivity {
 
     private Context mContext;
+    private SQLiteDatabase db;
+    private MyDBOpenHelper myDBHelper;
 
     private Bundle bundle;
     private EditText editableTitle;
@@ -27,9 +32,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
     private String updatedTitle;
     private String updatedContents;
-
-    private SQLiteDatabase db;
-    private MyDBOpenHelper myDBHelper;
 
     ContentResolver resolver;
 
@@ -92,7 +94,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         titleValue.put("contents", updatedContents);
 
         resolver.update(ProviderContract.URI.ID_UPDATE, titleValue, "recipeId = ?", new String[]{String.valueOf(selectedId)});
-        Toast.makeText(getApplicationContext(), "update finished", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Recipe is updated", Toast.LENGTH_SHORT).show();
 
         finish();
     }
@@ -101,7 +103,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     public void delete(View v) {
 
         resolver.delete(ProviderContract.URI.ID_DELETE, "recipeId = ?", new String[]{String.valueOf(selectedId)});
-        Toast.makeText(getApplicationContext(), "delete finished", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Recipe is deleted", Toast.LENGTH_SHORT).show();
 
         finish();
     }

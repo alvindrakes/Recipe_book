@@ -8,10 +8,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
+/*
+    4 actions implemented to modify the database table:
+        1. insert
+        2. delete
+        3. update
+        4. query
+ */
 
 public class RecipeContentProvider extends ContentProvider {
 
-    //codes for four kinds of actions
     final static int ID_INSERT = 1;
     final static int ID_QUERY = 2;
     final static int ID_UPDATE = 3;
@@ -21,7 +27,7 @@ public class RecipeContentProvider extends ContentProvider {
     private MyDBOpenHelper dbOpenHelper;
     private SQLiteDatabase db;
 
-    //register all the uris
+    //register all the uris available
     static {
         matcher.addURI(ProviderContract.AUTHORITY, "recipe/insert", ID_INSERT);
         matcher.addURI(ProviderContract.AUTHORITY, "recipe/query", ID_QUERY);
@@ -42,7 +48,6 @@ public class RecipeContentProvider extends ContentProvider {
             case ID_QUERY:
                 db = dbOpenHelper.getReadableDatabase();
                 Cursor cursor = db.query("recipe", projection, selection, selectionArgs, null, null, sortOrder);
-                //cursor.setNotificationUri(getContext().getContentResolver(), BASE_URI);
                 return cursor;
             default:
                 throw new IllegalArgumentException("unknown uri " + uri);
