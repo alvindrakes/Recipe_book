@@ -11,6 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/*
+    All recipes stored in the database shown in listview
+ */
 public class ViewActivity extends AppCompatActivity {
 
     private Context mContext;
